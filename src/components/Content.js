@@ -6,8 +6,7 @@ import { v4 as uuidV4 } from 'uuid';
 
 function Content() {
   const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem('todos')),
-    []
+    JSON.parse(localStorage.getItem('todos')) || []
   );
   const [showState, setShowState] = useState('all');
   const inputRef = useRef(null);

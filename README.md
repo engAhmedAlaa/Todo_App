@@ -1,4 +1,4 @@
-# Todo app
+# Todo App
 
 ## Description
 
