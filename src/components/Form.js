@@ -1,7 +1,7 @@
 import { useState, useRef, forwardRef } from 'react';
 import { BsPlus } from 'react-icons/bs';
 
-const Form = forwardRef(function Form({ handleClickAddTodo }, ref) {
+const Form = forwardRef(function Form({ dispatch }, ref) {
   const [todoContent, setTodoContent] = useState('');
   const btnRef = useRef(null);
 
@@ -9,15 +9,15 @@ const Form = forwardRef(function Form({ handleClickAddTodo }, ref) {
     setTodoContent(event.target.value);
   }
 
-  function handleSubmit(event) {
+  function handleAddTodo(event) {
     event.preventDefault();
-    handleClickAddTodo(todoContent);
+    dispatch({ type: 'add_todo', todoContent });
     setTodoContent('');
     ref.current.focus();
   }
 
   return (
-    <form className="main-form" onSubmit={handleSubmit}>
+    <form className="main-form" onSubmit={handleAddTodo}>
       <button
         className={`add-btn ${todoContent === '' ? '' : 'active'}`}
         aria-label="Add new todo"

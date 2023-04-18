@@ -1,4 +1,8 @@
-function FilterButton({ state, showState, handleClickState }) {
+function FilterButton({ state, showState, setShowState }) {
+  function handleClickState(state) {
+    setShowState(state);
+  }
+
   return (
     <button
       className={`filter-btn ${showState === state ? 'active' : ''}`}

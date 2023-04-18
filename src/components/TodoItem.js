@@ -1,45 +1,78 @@
-function TodoItem({
-  id,
-  content,
-  isCompleted,
-  handleClickDeleteTodo,
-  handleChangeCheckTodo,
-}) {
+import { useState } from 'react';
+import checkIcon from '../assets/check.svg';
+import crossIcon from '../assets/cross.svg';
+import { CiEdit } from 'react-icons/ci';
+import { BsHandThumbsUp } from 'react-icons/bs';
+
+function TodoItem({ todo, dispatch }) {
+  const { id, content, isCompleted } = todo;
+  const [editedContent, setEditedContent] = useState(content);
+  const [isEditing, setIsEditing] = useState(false);
+
+  function handleCheckTodo() {
+    dispatch({ type: 'check_todo', todoId: id });
+  }
+
+  function handleSaveTodo() {
+    dispatch({ type: 'save_todo', todoId: id, editedContent });
+  }
+
+  function handleDeleteTodo() {
+    dispatch({ type: 'delete_todo', todoId: id });
+  }
+
   return (
     <li className={`todo-item ${isCompleted ? 'completed' : ''}`}>
       <label className="check-icon">
         <input
           type="checkbox"
           checked={isCompleted}
-          onChange={() => handleChangeCheckTodo(id)}
+          onChange={handleCheckTodo}
         />
-        {isCompleted && (
-          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
-            <path
-              fill="none"
-              stroke="#FFF"
-              strokeWidth="2"
-              d="M1 4.304L3.696 7l6-6"
-            />
-          </svg>
-        )}
+        {isCompleted && <img src={checkIcon} alt="Check Icon" />}
       </label>
-      <span className="content" onDoubleClick={() => handleChangeCheckTodo(id)}>
-        {content}
-      </span>
-      <button
-        className="delete-btn"
-        aria-label="Delete todo"
-        onClick={() => handleClickDeleteTodo(id)}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-          <path
-            fill="#494C6B"
-            fillRule="evenodd"
-            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
-          />
-        </svg>
-      </button>
+      {isEditing ? (
+        <input
+          type="text"
+          className="edit-inp"
+          value={editedContent}
+          onChange={(e) => setEditedContent(e.target.value)}
+          autoFocus
+        />
+      ) : (
+        <span className="content" onDoubleClick={handleCheckTodo}>
+          {content}
+        </span>
+      )}
+      <div className="btns">
+        {isEditing ? (
+          <button
+            className="save-btn"
+            onClick={() => {
+              setIsEditing(false);
+              handleSaveTodo();
+            }}
+            aria-label="Save todo"
+          >
+            <BsHandThumbsUp />
+          </button>
+        ) : (
+          <button
+            className="edit-btn"
+            onClick={() => setIsEditing(true)}
+            aria-label="Edit todo"
+          >
+            <CiEdit />
+          </button>
+        )}
+        <button
+          className="delete-btn"
+          aria-label="Delete todo"
+          onClick={handleDeleteTodo}
+        >
+          <img src={crossIcon} alt="Cross Icon" />
+        </button>
+      </div>
     </li>
   );
 }
