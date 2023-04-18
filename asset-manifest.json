@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/Todo_App/static/css/main.e41c3794.css",
-    "main.js": "/Todo_App/static/js/main.be7188a7.js",
+    "main.css": "/Todo_App/static/css/main.3f3dffc1.css",
+    "main.js": "/Todo_App/static/js/main.3d23ab75.js",
     "static/media/bg-desktop-light.jpg": "/Todo_App/static/media/bg-desktop-light.3508d620efd5a52bb4ce.jpg",
     "static/media/bg-desktop-dark.jpg": "/Todo_App/static/media/bg-desktop-dark.73e47dbb723ebc772ef0.jpg",
     "index.html": "/Todo_App/index.html",
-    "main.e41c3794.css.map": "/Todo_App/static/css/main.e41c3794.css.map",
-    "main.be7188a7.js.map": "/Todo_App/static/js/main.be7188a7.js.map"
+    "static/media/sun.svg": "/Todo_App/static/media/sun.7f82caafabe2a572eac0c40ac62f6b3e.svg",
+    "static/media/moon.svg": "/Todo_App/static/media/moon.e4986d521da9bea34e093f9ab17d7242.svg",
+    "static/media/cross.svg": "/Todo_App/static/media/cross.d047fb1b530ceaefc42c1aad328859e0.svg",
+    "static/media/check.svg": "/Todo_App/static/media/check.185e60b3dfb766f95ce16fc241f6c1e8.svg",
+    "main.3f3dffc1.css.map": "/Todo_App/static/css/main.3f3dffc1.css.map",
+    "main.3d23ab75.js.map": "/Todo_App/static/js/main.3d23ab75.js.map"
   },
   "entrypoints": [
-    "static/css/main.e41c3794.css",
-    "static/js/main.be7188a7.js"
+    "static/css/main.3f3dffc1.css",
+    "static/js/main.3d23ab75.js"
   ]
 }
